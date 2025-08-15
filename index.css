@@ -1,0 +1,493 @@
+/* Reset & Base */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #fdfdfd;
+    scroll-behavior: smooth;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #1a1a1a;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.nav-logo span {
+    color: #d4af37;
+}
+
+.nav-menu .nav-link {
+    color: #bdc3c7;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-menu .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 2px;
+    background-color: #d4af37;
+    transition: width 0.3s ease;
+}
+
+.nav-menu .nav-link:hover {
+    color: #fff;
+}
+
+.nav-menu .nav-link:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero-section {
+    height: 100vh;
+    min-height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url('https://wallpapers.com/images/hd/jewellery-background-1920-x-1080-pxqa1q7pb1owttao.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: bgZoom 10s ease-in-out infinite alternate;
+}
+
+/* Fix for mobile */
+@media (max-width: 768px) {
+    .hero-section {
+        height: 100vh;
+        min-height: 500px;
+        animation: none;
+        /* stop zoom on mobile to prevent gaps */
+        background-size: cover;
+        /* ensure full coverage */
+        background-position: center center;
+    }
+}
+
+@keyframes bgZoom {
+    from {
+        background-size: 105%;
+    }
+
+    /* start slightly zoomed in */
+    to {
+        background-size: 110%;
+    }
+
+    /* zoom in more */
+}
+
+@keyframes bgZoom {
+    from {
+        background-size: cover;
+    }
+
+    /* starts fully covered */
+    to {
+        background-size: 110%;
+    }
+
+    /* zooms in slightly */
+}
+
+
+@keyframes bgZoom {
+    from {
+        background-size: 100%;
+    }
+
+    to {
+        background-size: 105%;
+    }
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1.5s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    font-weight: 400;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.cta-button {
+    text-decoration: none;
+    padding: 14px 35px;
+    border: 2px solid white;
+    background: transparent;
+    color: white;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background: white;
+    color: black;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+
+/* Category Section */
+.category-section {
+    padding: 4rem 2rem;
+    text-align: center;
+    background-color: #fafafa;
+}
+
+.category-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #1a1a1a;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.category-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease;
+}
+
+.category-card img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.category-card .hover-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.category-card:hover {
+    transform: translateY(-5px) scale(1.02);
+}
+
+.category-card:hover .default-img {
+    opacity: 0;
+}
+
+.category-card:hover .hover-img {
+    opacity: 1;
+}
+
+.category-title {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(26, 26, 26, 0.7);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    font-family: 'Playfair Display', serif;
+}
+
+/* Product Cards */
+.product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.product-card img {
+    transition: transform 0.4s ease;
+}
+
+.product-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Testimonials */
+.testimonials-section {
+    padding: 6rem 2rem;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.testimonials-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.testimonial-card {
+    background-color: #f8f8f8;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin: 1rem;
+    transition: transform 0.3s ease;
+    flex: 1 1 calc(33.333% - 2rem);
+    /* 3 cards in a row on desktop */
+    max-width: calc(33.333% - 2rem);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+}
+
+.testimonial-stars {
+    color: #d4af37;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.testimonial-author {
+    font-weight: bold;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 992px) {
+    .testimonial-card {
+        flex: 1 1 calc(50% - 2rem);
+        /* 2 cards per row */
+        max-width: calc(50% - 2rem);
+    }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 576px) {
+    .testimonial-card {
+        flex: 1 1 100%;
+        /* 1 card per row */
+        max-width: 100%;
+    }
+}
+
+/* About Section Modern Style */
+.about-section {
+    background-color: #f8f9fa;
+    /* light grey background */
+    padding: 5rem 2rem;
+}
+
+.about-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.about-image {
+    flex: 1;
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    transition: transform 0.4s ease;
+}
+
+.about-image img:hover {
+    transform: scale(1.02);
+}
+
+.about-text {
+    flex: 1;
+    color: #333;
+}
+
+.about-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+.about-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-text h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Contact Section */
+.contact-section {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 5rem 2rem;
+}
+
+.contact-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: #d4af37;
+    /* gold */
+}
+
+.contact-section .subtitle {
+    font-weight: 500;
+    color: #ccc;
+}
+
+.contact-icon {
+    font-size: 2rem;
+    color: #d4af37;
+    /* gold */
+    margin-bottom: 0.8rem;
+    display: inline-block;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.contact-section h5 {
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+.contact-section p {
+    margin: 0;
+    color: #ccc;
+}
+
+.contact-icon:hover {
+    transform: scale(1.2);
+    color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contact-section h2 {
+        font-size: 1.8rem;
+    }
+}
+
+
+/*  */
+/* Footer Styling - Blue Theme */
+.simple-footer {
+    background-color: #f0f4f8;
+    /* very light blue background */
+    color: #333;
+    /* dark text */
+    padding: 3rem 0 1rem;
+}
+
+.footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #1a1a1a;
+    /* dark title */
+}
+
+.footer-logo span {
+    color: #0077b6;
+    /* primary blue */
+}
+
+.footer-heading {
+    color: #0077b6;
+    /* blue heading */
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    color: #333;
+    /* dark link */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #0077b6;
+    /* blue on hover */
+}
+
+.footer-icons a {
+    color: #0077b6;
+    /* blue icons */
+    margin-right: 10px;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.footer-icons a:hover {
+    color: #005f8e;
+    /* darker blue hover */
+}
+
+.simple-footer .border-top {
+    border-color: #cfd9e2 !important;
+    /* light blue-grey border */
+}
